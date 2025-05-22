@@ -16,7 +16,7 @@ CREATE TABLE CustomerPhone (
 CREATE TABLE CustomerEmail (
     CustomerID INT NOT NULL REFERENCES Customer(CustomerID),  -- Link to Customer table
     Email VARCHAR(100) NOT NULL,                              -- Email address
-    PRIMARY KEY (CustomerID, Email)                           -- Composite key to avoid duplicates
+    PRIMARY KEY (CustomerID, Email)                           -- Composite key
 );
 
 -- Table to store support staff information
@@ -55,4 +55,38 @@ CREATE TABLE Interaction (
     Timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,          -- When the comment was made
     Comment TEXT NOT NULL                                            -- The message itself
 );
+
+-- Sample data inserts for customers
+INSERT INTO Customer (FirstName, LastName) VALUES ('Alice', 'Smith');
+INSERT INTO Customer (FirstName, LastName) VALUES ('Bob', 'Johnson');
+
+-- Sample phone numbers for customers
+INSERT INTO CustomerPhone (CustomerID, PhoneNumber) VALUES (1, '123-456-7890');
+INSERT INTO CustomerPhone (CustomerID, PhoneNumber) VALUES (2, '234-567-8901');
+
+-- Sample emails for customers
+INSERT INTO CustomerEmail (CustomerID, Email) VALUES (1, 'alice@example.com');
+INSERT INTO CustomerEmail (CustomerID, Email) VALUES (2, 'bob@example.com');
+
+-- Sample support staff entries
+INSERT INTO SupportStaff (FirstName, LastName, Department, Role) VALUES ('John', 'Doe', 'IT', '1st Level Support');
+INSERT INTO SupportStaff (FirstName, LastName, Department, Role) VALUES ('Jane', 'Smith', 'Networking', '2nd Level Support');
+
+-- Sample support requests
+INSERT INTO SupportRequest (CustomerID, Subject, Description, Status, Priority) 
+VALUES (1, 'Cannot login', 'User reports login issues.', 'Open', 'High');
+
+INSERT INTO SupportRequest (CustomerID, Subject, Description, Status, Priority) 
+VALUES (2, 'Email setup', 'Help with email configuration.', 'In Progress', 'Medium');
+
+-- Assign handlers
+INSERT INTO HandledRequest (StaffID, RequestID) VALUES (1, 1);
+INSERT INTO HandledRequest (StaffID, RequestID) VALUES (2, 2);
+
+-- Sample interactions
+INSERT INTO Interaction (RequestID, StaffID, Comment) 
+VALUES (1, 1, 'Checked user credentials, no issues found.');
+
+INSERT INTO Interaction (RequestID, StaffID, Comment) 
+VALUES (2, 2, 'Configured email settings remotely.');
 
