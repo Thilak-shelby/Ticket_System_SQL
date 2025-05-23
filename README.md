@@ -73,7 +73,7 @@ Contributions, suggestions, and improvements are welcome. Feel free to open issu
 
 ## Contact
 
-Created by Thilakraj Soundararajan — feel free to reach out for questions or collaboration.
+Created by Thilakraj Soundararajan — feel free to reach out for questions.
 
 ---
 
